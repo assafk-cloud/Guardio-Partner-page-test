@@ -4,83 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guardio Design Kit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Design tokens + shared component styles — single source of truth -->
+  <link rel="stylesheet" href="partners.css" />
   <style>
     /* ============================================================
-       GUARDIO DESIGN KIT — Visual Language Reference
-       Extracted from guard.io · March 2026
+       GUARDIO DESIGN KIT — Reference document styles only
+       Component tokens come from partners.css (linked above)
     ============================================================ */
-
-    /* === DESIGN TOKENS === */
-    :root {
-      /* --- Color Palette --- */
-      --color-navy:        #1c2135;   /* Primary dark — headers, text, dark sections */
-      --color-blue:        #2e69ff;   /* Primary blue — CTAs, links, accents */
-      --color-blue-light:  #5488fd;   /* Secondary blue — hover states */
-      --color-green:       #14ae5c;   /* Success / secure status */
-      --color-red:         #fb462d;   /* Alert / warning / threat */
-      --color-badge-blue:  #d4dbf6;   /* Badge background, subtle highlights */
-      --color-bg-light:    #f6f6f6;   /* Light section background */
-      --color-bg-mid:      #efefef;   /* Borders, dividers, disabled */
-      --color-border:      #d8e2ea;   /* Form borders, separators */
-      --color-text-muted:  #6d6d6d;   /* Secondary body text */
-      --color-white:       #ffffff;
-      --color-black:       #000000;
-
-      /* --- Typography --- */
-      --font-family: 'Inter', sans-serif;
-
-      /* Font sizes */
-      --text-h1:     68px;
-      --text-h2:     44px;
-      --text-h3:     24px;
-      --text-h4:     20px;
-      --text-body:   16px;
-      --text-small:  14px;
-      --text-xs:     12px;
-
-      /* Font weights */
-      --weight-regular: 400;
-      --weight-medium:  500;
-      --weight-semibold: 600;
-
-      /* Line heights */
-      --leading-h1:   74.8px;
-      --leading-h2:   57.2px;
-      --leading-h3:   31.2px;
-      --leading-body: 1.5;
-
-      /* --- Spacing --- */
-      --space-1:   4px;
-      --space-2:   8px;
-      --space-3:  12px;
-      --space-4:  16px;
-      --space-5:  20px;
-      --space-6:  24px;
-      --space-7:  28px;
-      --space-8:  32px;
-      --space-10: 40px;
-      --space-12: 48px;
-      --space-14: 56px;
-      --space-16: 64px;
-      --space-20: 80px;
-      --space-24: 96px;
-
-      /* --- Border Radius --- */
-      --radius-sm:   3px;   /* Badges / tags */
-      --radius-md:  10px;   /* Cards */
-      --radius-lg:  16px;   /* Large cards */
-      --radius-pill: 100px; /* Buttons */
-
-      /* --- Shadows --- */
-      --shadow-card: rgba(174, 174, 174, 0.2) 0px 5px 20px 0px;
-      --shadow-nav:  0 2px 12px rgba(28, 33, 53, 0.06);
-
-      /* --- Layout --- */
-      --max-width: 1200px;
-      --nav-padding: 0 60px;
-      --section-padding: 80px 60px;
-    }
 
     /* === KIT PAGE STYLES === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
