@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guardio Design Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       GUARDIO DESIGN KIT — Visual Language Reference
+       Extracted from guard.io · March 2026
+    ============================================================ */
+
+    /* === DESIGN TOKENS === */
+    :root {
+      /* --- Color Palette --- */
+      --color-navy:        #1c2135;   /* Primary dark — headers, text, dark sections */
+      --color-blue:        #2e69ff;   /* Primary blue — CTAs, links, accents */
+      --color-blue-light:  #5488fd;   /* Secondary blue — hover states */
+      --color-green:       #14ae5c;   /* Success / secure status */
+      --color-red:         #fb462d;   /* Alert / warning / threat */
+      --color-badge-blue:  #d4dbf6;   /* Badge background, subtle highlights */
+      --color-bg-light:    #f6f6f6;   /* Light section background */
+      --color-bg-mid:      #efefef;   /* Borders, dividers, disabled */
+      --color-border:      #d8e2ea;   /* Form borders, separators */
+      --color-text-muted:  #6d6d6d;   /* Secondary body text */
+      --color-white:       #ffffff;
+      --color-black:       #000000;
+
+      /* --- Typography --- */
+      --font-family: 'Inter', sans-serif;
+
+      /* Font sizes */
+      --text-h1:     68px;
+      --text-h2:     44px;
+      --text-h3:     24px;
+      --text-h4:     20px;
+      --text-body:   16px;
+      --text-small:  14px;
+      --text-xs:     12px;
+
+      /* Font weights */
+      --weight-regular: 400;
+      --weight-medium:  500;
+      --weight-semibold: 600;
+
+      /* Line heights */
+      --leading-h1:   74.8px;
+      --leading-h2:   57.2px;
+      --leading-h3:   31.2px;
+      --leading-body: 1.5;
+
+      /* --- Spacing --- */
+      --space-1:   4px;
+      --space-2:   8px;
+      --space-3:  12px;
+      --space-4:  16px;
+      --space-5:  20px;
+      --space-6:  24px;
+      --space-7:  28px;
+      --space-8:  32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-14: 56px;
+      --space-16: 64px;
+      --space-20: 80px;
+      --space-24: 96px;
+
+      /* --- Border Radius --- */
+      --radius-sm:   3px;   /* Badges / tags */
+      --radius-md:  10px;   /* Cards */
+      --radius-lg:  16px;   /* Large cards */
+      --radius-pill: 100px; /* Buttons */
+
+      /* --- Shadows --- */
+      --shadow-card: rgba(174, 174, 174, 0.2) 0px 5px 20px 0px;
+      --shadow-nav:  0 2px 12px rgba(28, 33, 53, 0.06);
+
+      /* --- Layout --- */
+      --max-width: 1200px;
+      --nav-padding: 0 60px;
+      --section-padding: 80px 60px;
+    }
+
+    /* === KIT PAGE STYLES === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-family);
+      background: var(--color-bg-light);
+      color: var(--color-navy);
+      font-size: var(--text-small);
+      line-height: var(--leading-body);
+    }
+
+    /* Kit layout */
+    .kit-header {
+      background: var(--color-navy);
+      color: white;
+      padding: 48px 60px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .kit-header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .kit-header-logo svg { width: 40px; height: 40px; }
+    .kit-header h1 {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .kit-header p {
+      font-size: 28px;
+      font-weight: 500;
+      color: white;
+      margin-top: 4px;
+    }
+    .kit-header-meta {
+      margin-left: auto;
+      text-align: right;
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+    }
+
+    .kit-nav {
+      background: white;
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 60px;
+      display: flex;
+      gap: 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .kit-nav a {
+      display: block;
+      padding: 16px 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .kit-nav a:hover { color: var(--color-navy); border-color: var(--color-blue); }
+
+    .kit-content { max-width: 1260px; margin: 0 auto; padding: 48px 60px 100px; }
+
+    .kit-section {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-card);
+    }
+    .kit-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* --- Color Swatches --- */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .swatch {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .swatch-color {
+      height: 72px;
+      width: 100%;
+    }
+    .swatch-info {
+      padding: 10px 12px;
+      background: white;
+    }
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-navy);
+      margin-bottom: 2px;
+    }
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      font-family: 'Courier New', monospace;
+    }
+    .swatch-usage {
+      font-size: 10px;
+      color: var(--color-text-muted);
+      margin-top: 3px;
+    }
+
+    /* --- Typography --- */
+    .type-specimen {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .type-specimen:last-child { border-bottom: none; }
+    .type-meta { padding-top: 6px; }
+    .type-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-text-muted);
+    }
+    .type-specs {
+      font-size: 11px;
+      color: var(--color-text-muted);
+      margin-top: 6px;
+      line-height: 1.7;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* --- Buttons --- */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .btn-row:last-child { border-bottom: none; }
+    .btn-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      width: 200px;
+      flex-shrink: 0;
+    }
+
+    /* Guardio actual button styles */
+    .btn-primary-lg {
+      display: inline-block;
+      background: var(--color-blue);
+      color: white;
+      font-family: var(--font-family);
+      font-size: 20px;
+      font-weight: 500;
+      border-radius: 100px;
+      padding: 14px 28px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary-lg:hover { background: var(--color-blue-light); }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-blue);
+      color: white;
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 100px;
+      padding: 12px 20px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--color-blue-light); }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--color-navy);
+      color: white;
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 100px;
+      padding: 14px 28px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+
+    .btn-ghost-dark {
+      display: inline-block;
+      background: transparent;
+      color: white;
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 100px;
+      padding: 13px 27px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost-dark:hover { border-color: white; }
+
+    .btn-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--color-blue);
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .btn-text-link:hover { text-decoration: underline; }
+    .btn-text-link-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--color-navy);
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-nav-login {
+      background: transparent;
+      color: var(--color-navy);
+      font-family: var(--font-family);
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* --- Components --- */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .component-item {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .component-preview {
+      padding: 32px 24px;
+      background: var(--color-bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+    .component-preview.dark { background: var(--color-navy); }
+    .component-name {
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: white;
+      border-top: 1px solid var(--color-border);
+    }
+    .component-spec {
+      padding: 8px 14px 12px;
+      font-size: 11px;
+      color: var(--color-text-muted);
+      background: white;
+      font-family: 'Courier New', monospace;
+      line-height: 1.7;
+    }
+
+    /* Actual Guardio card component */
+    .guardio-card {
+      background: white;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      padding: 20px;
+    }
+
+    /* Badge component */
+    .guardio-badge {
+      display: inline-block;
+      background: var(--color-badge-blue);
+      color: var(--color-navy);
+      font-family: var(--font-family);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      padding: 2px 7px 2px 5px;
+    }
+    .guardio-badge-green {
+      background: rgba(20, 174, 92, 0.15);
+      color: #0d8a49;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      display: inline-block;
+    }
+    .guardio-badge-red {
+      background: rgba(251, 70, 45, 0.12);
+      color: var(--color-red);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      padding: 3px 8px;
+      display: inline-block;
+    }
+
+    /* Nav component */
+    .guardio-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(216,226,234,0.4);
+      padding: 0 60px;
+      display: flex;
+      align-items: center;
+      height: 68px;
+      gap: 32px;
+      border-radius: var(--radius-md);
+    }
+    .guardio-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-navy);
+      text-decoration: none;
+      margin-right: 16px;
+    }
+    .guardio-nav-logo svg { width: 28px; height: 28px; }
+    .guardio-nav-links {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+    }
+    .guardio-nav-link {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-navy);
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.2s;
+    }
+    .guardio-nav-link:hover { background: var(--color-bg-light); }
+    .guardio-nav-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+
+    /* Stat card component */
+    .guardio-stat-card {
+      background: var(--color-navy);
+      color: white;
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .guardio-stat-number {
+      font-size: 44px;
+      font-weight: 500;
+      color: white;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .guardio-stat-label {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    /* Feature card component */
+    .guardio-feature-card {
+      background: white;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .guardio-feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--color-badge-blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .guardio-feature-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-blue);
+      letter-spacing: 0.5px;
+    }
+    .guardio-feature-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-navy);
+      line-height: 1.3;
+    }
+    .guardio-feature-desc {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Testimonial card */
+    .guardio-testimonial {
+      background: white;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      padding: 24px;
+    }
+    .guardio-testimonial-stars {
+      color: #f5a623;
+      font-size: 14px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .guardio-testimonial-text {
+      font-size: 14px;
+      color: var(--color-navy);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .guardio-testimonial-author {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-navy);
+    }
+
+    /* Threat card (dark) */
+    .guardio-threat-card {
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guardio-threat-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-bg-light);
+      border-radius: 10px;
+    }
+    .guardio-threat-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-navy);
+    }
+    .guardio-threat-desc {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Section layouts */
+    .section-demo {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .section-white { background: white; padding: 48px 40px; }
+    .section-light { background: var(--color-bg-light); padding: 48px 40px; }
+    .section-dark { background: var(--color-navy); padding: 48px 40px; color: white; }
+    .section-cta-banner {
+      background: var(--color-navy);
+      border-radius: var(--radius-lg);
+      padding: 48px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    /* Token table */
+    .token-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .token-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      border-bottom: 2px solid var(--color-border);
+    }
+    .token-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+    .token-table tr:last-child td { border-bottom: none; }
+    .token-table .token-name {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--color-blue);
+    }
+    .token-table .token-value {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+    .token-dot {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 8px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    /* Icon for chevron arrows */
+    .arrow { display: inline-block; margin-left: 4px; }
+
+    /* ============================================================
+       Responsive
+    ============================================================ */
+    @media (max-width: 900px) {
+      .kit-content { padding: 32px 24px; }
+      .kit-header { padding: 36px 24px; flex-wrap: wrap; }
+      .kit-nav { padding: 0 24px; gap: 20px; }
+      .type-specimen { grid-template-columns: 1fr; }
+      .section-cta-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     HEADER
+================================================================ -->
+<header class="kit-header">
+  <div class="kit-header-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="40" height="40" rx="8" fill="white"/>
+      <path d="M20 8L10 13v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12v-8L20 8z" fill="#1c2135"/>
+      <path d="M20 8L10 13v8c0 5.5 4.3 10.7 10 12 5.7-1.3 10-6.5 10-12v-8L20 8z" fill="url(#logo-grad)"/>
+      <defs>
+        <linearGradient id="logo-grad" x1="10" y1="8" x2="30" y2="32" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#2e69ff"/>
+          <stop offset="1" stop-color="#1c2135"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div>
+    <h1>Guardio</h1>
+    <p>Design Kit · Visual Language Reference</p>
+  </div>
+  <div class="kit-header-meta">
+    Extracted from guard.io<br>March 2026
+  </div>
+</header>
+
+<!-- ================================================================
+     STICKY NAV
+================================================================ -->
+<nav class="kit-nav">
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#components">Components</a>
+  <a href="#sections">Section Templates</a>
+  <a href="#tokens">Design Tokens</a>
+</nav>
+
+<!-- ================================================================
+     CONTENT
+================================================================ -->
+<main class="kit-content">
+
+  <!-- ============================================================
+       1. COLOR PALETTE
+  ============================================================ -->
+  <section class="kit-section" id="colors">
+    <div class="kit-section-title">01 · Color Palette</div>
+
+    <div class="swatch-grid">
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1c2135;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-hex">#1c2135</div>
+          <div class="swatch-usage">Primary text, dark sections, dark CTAs</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2e69ff;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blue</div>
+          <div class="swatch-hex">#2e69ff</div>
+          <div class="swatch-usage">Primary CTAs, links, brand accent</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5488fd;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Blue Light</div>
+          <div class="swatch-hex">#5488fd</div>
+          <div class="swatch-usage">Hover state for primary blue</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#14ae5c;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Green</div>
+          <div class="swatch-hex">#14ae5c</div>
+          <div class="swatch-usage">Success, secure status, protected</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#fb462d;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Red</div>
+          <div class="swatch-hex">#fb462d</div>
+          <div class="swatch-usage">Alert, warning, threat detected</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d4dbf6;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Badge Blue</div>
+          <div class="swatch-hex">#d4dbf6</div>
+          <div class="swatch-usage">Badges, tags, subtle highlights</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f6f6f6; border:1px solid #e8e8e8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gray Light</div>
+          <div class="swatch-hex">#f6f6f6</div>
+          <div class="swatch-usage">Alternate section backgrounds</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#efefef; border:1px solid #e0e0e0;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gray Mid</div>
+          <div class="swatch-hex">#efefef</div>
+          <div class="swatch-usage">Borders, dividers, disabled states</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#d8e2ea; border:1px solid #ccc;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Border</div>
+          <div class="swatch-hex">#d8e2ea</div>
+          <div class="swatch-usage">Input borders, separators</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6d6d6d;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Text Muted</div>
+          <div class="swatch-hex">#6d6d6d</div>
+          <div class="swatch-usage">Secondary body text, captions</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ffffff; border:1px solid #e8e8e8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#ffffff</div>
+          <div class="swatch-usage">Backgrounds, button text on dark</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. TYPOGRAPHY
+  ============================================================ -->
+  <section class="kit-section" id="typography">
+    <div class="kit-section-title">02 · Typography — Inter</div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">H1 — Hero</div>
+        <div class="type-specs">68px / 500<br>Line: 74.8px<br>Track: -1.02px</div>
+      </div>
+      <div>
+        <div style="font-size:52px; font-weight:500; color:#1c2135; letter-spacing:-0.8px; line-height:1.1;">Protect everything<br>you do online</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">H2 — Section</div>
+        <div class="type-specs">44px / 500<br>Line: 57.2px<br>Track: normal</div>
+      </div>
+      <div>
+        <div style="font-size:44px; font-weight:500; color:#1c2135; line-height:57.2px;">Today's threats are different</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">H3 — Subsection</div>
+        <div class="type-specs">24px / 500<br>Line: 31.2px</div>
+      </div>
+      <div>
+        <div style="font-size:24px; font-weight:500; color:#1c2135; line-height:31.2px;">Browse and click safely anywhere</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">H4 / Large Body</div>
+        <div class="type-specs">20px / 400<br>Line: 30px</div>
+      </div>
+      <div>
+        <div style="font-size:20px; font-weight:400; color:#1c2135; line-height:30px;">Guardio protects your entire digital world by securing every account and interaction.</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">Body / Nav</div>
+        <div class="type-specs">16px / 500 (nav)<br>16px / 400 (body)</div>
+      </div>
+      <div>
+        <div style="font-size:16px; font-weight:500; color:#1c2135; margin-bottom:8px;">Navigation link  ·  Button text  ·  Labels</div>
+        <div style="font-size:16px; font-weight:400; color:#6d6d6d;">Regular paragraph text for body copy and descriptions.</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">Small / Caption</div>
+        <div class="type-specs">14px / 400–500<br>Line: 20px</div>
+      </div>
+      <div>
+        <div style="font-size:14px; font-weight:500; color:#1c2135; margin-bottom:4px;">Footer labels  ·  Secondary UI text</div>
+        <div style="font-size:14px; font-weight:400; color:#6d6d6d;">Caption text, metadata, legal copy, supplemental information.</div>
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-label">Stat / Display</div>
+        <div class="type-specs">44px / 500<br>(Used for numbers)</div>
+      </div>
+      <div style="display:flex; gap:48px; align-items:baseline;">
+        <div>
+          <div style="font-size:44px; font-weight:500; color:#1c2135; line-height:1;">1 in 4</div>
+          <div style="font-size:14px; color:#6d6d6d; margin-top:4px;">Americans affected</div>
+        </div>
+        <div>
+          <div style="font-size:44px; font-weight:500; color:#1c2135; line-height:1;">$12.5B</div>
+          <div style="font-size:14px; color:#6d6d6d; margin-top:4px;">Lost to cybercrime</div>
+        </div>
+        <div>
+          <div style="font-size:44px; font-weight:500; color:#1c2135; line-height:1;">38%</div>
+          <div style="font-size:14px; color:#6d6d6d; margin-top:4px;">Under age 50</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       3. BUTTONS
+  ============================================================ -->
+  <section class="kit-section" id="buttons">
+    <div class="kit-section-title">03 · Buttons &amp; Interactive Elements</div>
+
+    <div class="btn-row">
+      <div class="btn-label">Primary · Large</div>
+      <a class="btn-primary-lg" href="#">Start for Free</a>
+      <a class="btn-primary-lg" href="#">Get Started — It's Free</a>
+    </div>
+
+    <div class="btn-row">
+      <div class="btn-label">Primary · Regular</div>
+      <a class="btn-primary" href="#">Get Started — It's Free</a>
+      <a class="btn-primary" href="#">Learn More</a>
+    </div>
+
+    <div class="btn-row" style="background:var(--color-navy); padding:16px 20px; border-radius:10px; margin:0 -0px;">
+      <div class="btn-label" style="color:rgba(255,255,255,0.5);">Dark section CTAs</div>
+      <a class="btn-dark" href="#">Start for Free</a>
+      <a class="btn-ghost-dark" href="#">Learn More</a>
+    </div>
+
+    <div class="btn-row">
+      <div class="btn-label">Text Link</div>
+      <a class="btn-text-link" href="#">Learn More <span class="arrow">→</span></a>
+      <a class="btn-text-link" href="#">Read More <span class="arrow">→</span></a>
+      <a class="btn-text-link" href="#">Discover Guardio Labs' findings <span class="arrow">→</span></a>
+    </div>
+
+    <div class="btn-row">
+      <div class="btn-label">Nav Login</div>
+      <a class="btn-nav-login" href="#">Login</a>
+    </div>
+
+    <div class="btn-row">
+      <div class="btn-label">Badges &amp; Tags</div>
+      <span class="guardio-badge">New</span>
+      <span class="guardio-badge-green">✓ Secure</span>
+      <span class="guardio-badge-red">⚠ Threat</span>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       4. COMPONENTS
+  ============================================================ -->
+  <section class="kit-section" id="components">
+    <div class="kit-section-title">04 · UI Components</div>
+
+    <div class="component-grid">
+
+      <!-- Navigation Bar -->
+      <div class="component-item" style="grid-column: 1 / -1;">
+        <div class="component-preview" style="background:#f0f2f7; padding:20px 0; overflow-x:auto;">
+          <div class="guardio-nav" style="width:100%; max-width:900px;">
+            <a class="guardio-nav-logo" href="#">
+              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="28" height="28" rx="6" fill="#1c2135"/>
+                <path d="M14 5L7 9v6c0 4 3 7.5 7 8.5 4-1 7-4.5 7-8.5V9L14 5z" fill="#2e69ff"/>
+              </svg>
+              Guardio
+            </a>
+            <nav class="guardio-nav-links">
+              <a class="guardio-nav-link" href="#">Resources ▾</a>
+              <a class="guardio-nav-link" href="#">Support ▾</a>
+              <a class="guardio-nav-link" href="#">For Business ▾</a>
+              <a class="guardio-nav-link" href="#">Pricing</a>
+              <a class="guardio-nav-link" href="#">About</a>
+            </nav>
+            <div class="guardio-nav-actions">
+              <a class="btn-nav-login" href="#">Login</a>
+              <a class="btn-primary" href="#">Get Started — It's Free</a>
+            </div>
+          </div>
+        </div>
+        <div class="component-name">Navigation Bar</div>
+        <div class="component-spec">
+          height: 68px · padding: 0 60px<br>
+          background: rgba(255,255,255,0.92) + backdrop-filter: blur(12px)<br>
+          Sticky positioned at top: 0
+        </div>
+      </div>
+
+      <!-- Feature Card -->
+      <div class="component-item">
+        <div class="component-preview">
+          <div class="guardio-feature-card" style="width:240px;">
+            <div class="guardio-feature-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2L4 5v5c0 3.5 2.7 6.8 6 7.5 3.3-.7 6-4 6-7.5V5L10 2z" fill="#2e69ff"/>
+              </svg>
+            </div>
+            <div class="guardio-feature-label">Browsing protection</div>
+            <div class="guardio-feature-title">Browse and click safely anywhere</div>
+            <div class="guardio-feature-desc">Fake sites that mimic trusted ones are more common than you might think.</div>
+          </div>
+        </div>
+        <div class="component-name">Feature Card</div>
+        <div class="component-spec">
+          bg: white · radius: 10px<br>
+          shadow: rgba(174,174,174,0.2) 0 5px 20px<br>
+          padding: 28px
+        </div>
+      </div>
+
+      <!-- Threat Card -->
+      <div class="component-item">
+        <div class="component-preview">
+          <div class="guardio-threat-card" style="width:220px;">
+            <div class="guardio-threat-icon"></div>
+            <div class="guardio-threat-title">Phishing in your inbox</div>
+            <div class="guardio-threat-desc">50% of phishing scams come via email or text, targeting both your data and money.</div>
+          </div>
+        </div>
+        <div class="component-name">Threat / Info Card</div>
+        <div class="component-spec">
+          bg: white · radius: 10px<br>
+          border: 1px solid #d8e2ea<br>
+          padding: 20px
+        </div>
+      </div>
+
+      <!-- Stat Card -->
+      <div class="component-item">
+        <div class="component-preview dark">
+          <div class="guardio-stat-card" style="width:200px;">
+            <div class="guardio-stat-number">1 in 4</div>
+            <div class="guardio-stat-label">Americans fall victim to cyber attacks</div>
+          </div>
+        </div>
+        <div class="component-name">Stat Card (Dark)</div>
+        <div class="component-spec">
+          bg: #1c2135 · radius: 10px<br>
+          number: 44px / 500 / white<br>
+          label: 14px / 400 / rgba(255,255,255,0.6)
+        </div>
+      </div>
+
+      <!-- Testimonial Card -->
+      <div class="component-item">
+        <div class="component-preview">
+          <div class="guardio-testimonial" style="width:240px;">
+            <div class="guardio-testimonial-stars">★★★★★</div>
+            <div class="guardio-testimonial-text">"Guardio goes way beyond any of the others. I feel confident using the web again."</div>
+            <div class="guardio-testimonial-author">Linda Koppes</div>
+          </div>
+        </div>
+        <div class="component-name">Testimonial Card</div>
+        <div class="component-spec">
+          bg: white · radius: 10px<br>
+          shadow: rgba(174,174,174,0.2) 0 5px 20px<br>
+          padding: 24px
+        </div>
+      </div>
+
+      <!-- Hero mini Card -->
+      <div class="component-item">
+        <div class="component-preview">
+          <div class="guardio-card" style="width:220px;">
+            <div style="font-size:11px;font-weight:600;color:#6d6d6d;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">Your Emails</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#1c2135;padding-bottom:8px;border-bottom:1px solid #f0f0f0;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#14ae5c;flex-shrink:0;"></span>
+                jonathansmith@gmail.com
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#1c2135;padding-bottom:8px;border-bottom:1px solid #f0f0f0;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#14ae5c;flex-shrink:0;"></span>
+                smith.jon@gmail.com
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#1c2135;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#fb462d;flex-shrink:0;"></span>
+                jonathan.s@yahoo.com
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="component-name">Dashboard Card (Light)</div>
+        <div class="component-spec">
+          bg: white · radius: 10px<br>
+          shadow: rgba(174,174,174,0.2) 0 5px 20px<br>
+          padding: 20px
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. SECTION TEMPLATES
+  ============================================================ -->
+  <section class="kit-section" id="sections">
+    <div class="kit-section-title">05 · Section Templates &amp; Backgrounds</div>
+
+    <!-- White Section -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6d6d6d;margin-bottom:8px;">White Section (default)</div>
+      <div class="section-demo">
+        <div class="section-white" style="border-radius:10px;border:1px solid #efefef;">
+          <div style="max-width:560px;">
+            <div style="font-size:32px;font-weight:500;color:#1c2135;line-height:1.2;margin-bottom:12px;">Smarter, safer protection for your digital world</div>
+            <div style="font-size:16px;color:#6d6d6d;margin-bottom:24px;">Guardio safeguards your entire digital world, securing every account, platform, and device.</div>
+            <a class="btn-primary" href="#">Learn More →</a>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:#6d6d6d;">background: #ffffff · padding: 80px 60px</div>
+    </div>
+
+    <!-- Light Gray Section -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6d6d6d;margin-bottom:8px;">Light Gray Section</div>
+      <div class="section-demo">
+        <div class="section-light" style="border-radius:10px;">
+          <div style="max-width:560px;">
+            <div style="font-size:32px;font-weight:500;color:#1c2135;margin-bottom:12px;">Today's threats are different</div>
+            <div style="font-size:16px;color:#6d6d6d;">Smarter, targeted, and harder to spot.</div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:#6d6d6d;">background: #f6f6f6 · padding: 80px 60px</div>
+    </div>
+
+    <!-- Dark Section -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6d6d6d;margin-bottom:8px;">Dark Section</div>
+      <div class="section-demo">
+        <div class="section-dark" style="border-radius:10px;">
+          <div style="max-width:560px;">
+            <div style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Guardio Labs</div>
+            <div style="font-size:28px;font-weight:500;color:white;margin-bottom:12px;">Our team specializes in identifying and mitigating new security threats.</div>
+            <a class="btn-text-link" href="#" style="color:rgba(255,255,255,0.7);">Discover Guardio Labs' findings →</a>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:#6d6d6d;">background: #1c2135 · padding: 80px 60px · text: white</div>
+    </div>
+
+    <!-- CTA Banner -->
+    <div>
+      <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#6d6d6d;margin-bottom:8px;">CTA Banner (rounded, dark)</div>
+      <div class="section-cta-banner">
+        <div>
+          <div style="font-size:28px;font-weight:500;color:white;line-height:1.3;margin-bottom:8px;">It couldn't be easier to<br>protect yourself online.</div>
+          <div style="font-size:16px;color:rgba(255,255,255,0.6);">Browse, email, and text care-free with Guardio.</div>
+        </div>
+        <a class="btn-dark" href="#" style="background:white;color:#1c2135;white-space:nowrap;">Start for Free</a>
+      </div>
+      <div style="font-size:11px;font-family:monospace;color:#6d6d6d;margin-top:8px;">background: #1c2135 · border-radius: 16px · padding: 48px 56px · display: flex space-between</div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       6. DESIGN TOKENS (CSS Variables)
+  ============================================================ -->
+  <section class="kit-section" id="tokens">
+    <div class="kit-section-title">06 · Design Tokens — CSS Variables</div>
+
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Value</th>
+          <th>Preview</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="token-name">--color-navy</td><td class="token-value">#1c2135</td><td><span class="token-dot" style="background:#1c2135;"></span></td><td style="font-size:12px;color:#6d6d6d;">Primary text, dark backgrounds</td></tr>
+        <tr><td class="token-name">--color-blue</td><td class="token-value">#2e69ff</td><td><span class="token-dot" style="background:#2e69ff;"></span></td><td style="font-size:12px;color:#6d6d6d;">CTAs, links, accents</td></tr>
+        <tr><td class="token-name">--color-blue-light</td><td class="token-value">#5488fd</td><td><span class="token-dot" style="background:#5488fd;"></span></td><td style="font-size:12px;color:#6d6d6d;">Button hover</td></tr>
+        <tr><td class="token-name">--color-green</td><td class="token-value">#14ae5c</td><td><span class="token-dot" style="background:#14ae5c;"></span></td><td style="font-size:12px;color:#6d6d6d;">Success, secure</td></tr>
+        <tr><td class="token-name">--color-red</td><td class="token-value">#fb462d</td><td><span class="token-dot" style="background:#fb462d;"></span></td><td style="font-size:12px;color:#6d6d6d;">Alert, threat</td></tr>
+        <tr><td class="token-name">--color-badge-blue</td><td class="token-value">#d4dbf6</td><td><span class="token-dot" style="background:#d4dbf6;"></span></td><td style="font-size:12px;color:#6d6d6d;">Badges, tags</td></tr>
+        <tr><td class="token-name">--color-bg-light</td><td class="token-value">#f6f6f6</td><td><span class="token-dot" style="background:#f6f6f6; border:1px solid #ddd;"></span></td><td style="font-size:12px;color:#6d6d6d;">Alt section backgrounds</td></tr>
+        <tr><td class="token-name">--color-bg-mid</td><td class="token-value">#efefef</td><td><span class="token-dot" style="background:#efefef; border:1px solid #ddd;"></span></td><td style="font-size:12px;color:#6d6d6d;">Borders, dividers</td></tr>
+        <tr><td class="token-name">--color-border</td><td class="token-value">#d8e2ea</td><td><span class="token-dot" style="background:#d8e2ea; border:1px solid #ccc;"></span></td><td style="font-size:12px;color:#6d6d6d;">Input borders</td></tr>
+        <tr><td class="token-name">--color-text-muted</td><td class="token-value">#6d6d6d</td><td><span class="token-dot" style="background:#6d6d6d;"></span></td><td style="font-size:12px;color:#6d6d6d;">Secondary text</td></tr>
+        <tr><td colspan="4" style="padding:8px 14px;background:#f6f6f6;"></td></tr>
+        <tr><td class="token-name">--font-family</td><td class="token-value">'Inter', sans-serif</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">All typography</td></tr>
+        <tr><td class="token-name">--text-h1</td><td class="token-value">68px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Hero headline</td></tr>
+        <tr><td class="token-name">--text-h2</td><td class="token-value">44px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Section titles + stat numbers</td></tr>
+        <tr><td class="token-name">--text-h3</td><td class="token-value">24px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Feature titles</td></tr>
+        <tr><td class="token-name">--text-h4</td><td class="token-value">20px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Lead paragraphs, large CTA text</td></tr>
+        <tr><td class="token-name">--text-body</td><td class="token-value">16px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Body copy, nav links, buttons</td></tr>
+        <tr><td class="token-name">--text-small</td><td class="token-value">14px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Secondary text, badges</td></tr>
+        <tr><td class="token-name">--weight-regular</td><td class="token-value">400</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Body, paragraphs</td></tr>
+        <tr><td class="token-name">--weight-medium</td><td class="token-value">500</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Headings, buttons, nav</td></tr>
+        <tr><td colspan="4" style="padding:8px 14px;background:#f6f6f6;"></td></tr>
+        <tr><td class="token-name">--radius-sm</td><td class="token-value">3px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Badges, tags</td></tr>
+        <tr><td class="token-name">--radius-md</td><td class="token-value">10px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Cards</td></tr>
+        <tr><td class="token-name">--radius-lg</td><td class="token-value">16px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Large containers, CTA banners</td></tr>
+        <tr><td class="token-name">--radius-pill</td><td class="token-value">100px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">All buttons</td></tr>
+        <tr><td class="token-name">--shadow-card</td><td class="token-value">rgba(174,174,174,0.2) 0 5px 20px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Cards, floating UI</td></tr>
+        <tr><td class="token-name">--max-width</td><td class="token-value">1200px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Page container max width</td></tr>
+        <tr><td class="token-name">--section-padding</td><td class="token-value">80px 60px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Standard section padding</td></tr>
+        <tr><td class="token-name">--nav-padding</td><td class="token-value">0 60px</td><td>—</td><td style="font-size:12px;color:#6d6d6d;">Navigation bar padding</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer style="background:var(--color-navy); color:rgba(255,255,255,0.4); text-align:center; padding:32px 60px; font-size:12px;">
+  Guardio Design Kit · Extracted March 2026 · For internal use only
+</footer>
+
+</body>
+</html>
